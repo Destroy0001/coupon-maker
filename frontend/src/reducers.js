@@ -41,7 +41,7 @@ const appReducer = (state = initState, action) => {
 		case 'DELETE_COUPON_FAILED':
 			return assign({},state,{
 				loading: false,
-				error: action.error.message
+				error: action.error.response.data
 			});
 
 		default:

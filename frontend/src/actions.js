@@ -33,7 +33,7 @@ export const requestCoupons = (dispatch) => {
 /*action creater to create a coupon */
 export const createCoupon = (dispatch, coupon) => {
 	dispatch({
-				type:"CREATE_COUPONS"
+				type:"CREATE_COUPON"
 			});
 
 	/* creating a new coupon */

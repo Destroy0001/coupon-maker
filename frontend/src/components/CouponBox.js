@@ -67,7 +67,12 @@ class CouponBox extends Component {
 	}
 
 	render = () => {
-		
+
+		const { loading } = this.props;
+		if(loading) {
+			return <i className="app-loader fa fa-spinner fa-spin fa-3x" />
+		}
+
 		return (
 				<div className="coupon-box">
 					<div className="coupon-box-header">

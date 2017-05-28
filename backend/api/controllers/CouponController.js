@@ -13,8 +13,8 @@ const fetchCoupons = (res) =>{
 
 			if(err){
 				sails.log.error(new Error(err));
-				res.status(500);
-				res.send("An Error occured while fetching coupons");
+				res.status(err.statusCode);
+				res.send(err.message);
 				return; 
 			}
 
@@ -49,8 +49,8 @@ module.exports = {
 		stripe.coupons.create( coupon, (err,coupon) => {
 				if(err){
 					sails.log.error(new Error(err));
-					res.status(500);
-					res.send("An error occured while creating coupon");
+					res.status(err.statusCode);
+					res.send(err.message);
 					return;
 				}
 
@@ -74,8 +74,8 @@ module.exports = {
 		stripe.coupons.del(id, (err,response) => {
 			if(err){
 				sails.log.error(new Error(err));
-				res.status(500);
-				res.send("An error occured while deleting coupon");
+				res.status(err.statusCode);
+				res.send(err.message);
 				return; 
 			}
 			fetchCoupons(res);

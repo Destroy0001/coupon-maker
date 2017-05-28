@@ -8,6 +8,7 @@ import CouponBox from '../components/CouponBox'
 const mapStateToProps = (state) => {
 	return {
 		error:state.appState.error,
+		loading:state.appState.loading,
 		coupons: state.couponState.coupons
 	}
 }
