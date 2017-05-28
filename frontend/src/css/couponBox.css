@@ -34,3 +34,9 @@
 	margin-left:auto;
 	margin-right:auto;
 }
+
+.no-coupons {
+	text-align: center;
+	font-size: 3em;
+	color: #dddddd;
+}
