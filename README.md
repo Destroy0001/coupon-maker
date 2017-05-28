@@ -21,7 +21,7 @@ FRONT_END_ORIGIN=your_frontend_base_url
 
 You have to start two different server to run the application. 
 
-Go to the backend folder and do an `npm start`
-Go to the frontend folder and do an `npm start`
+Go to the backend folder and do an `npm install` followed by an `npm start`
+Go to the frontend folder and do an `npm install` followed by an `npm start`
 
 Thanks!
