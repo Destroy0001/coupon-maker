@@ -1,17 +1,32 @@
 /**
 * Presentation Component for the application 
-*
-*
 */
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import CouponBox from '../containers/CouponBox';
+import swal from 'react-swal';
 import '../css/app.css';
-import axios from 'axios';
 
 class App extends Component {
-	
-	render() {
-		const { loading, error } = this.state;
+	constructor(props){
+		super(props);
+	}
+
+	componentDidMount(){
+		this.props.RequestCoupon();
+	}
+
+	showError = (error) => {
+		return <swal> error.message </swal>
+	}
+
+	render = () => {
+		const { loading, error } = this.props;
+
+		if(error){
+			return this.showError(error);
+		}
+
 		if(loading) {
 			return <i className="app-loader fa fa-spinner fa-spin fa-3x" />
 		}
@@ -23,5 +38,9 @@ class App extends Component {
 			);
 		}
 	}
+
+App.propTypes = {
+	RequestCoupon:PropTypes.func.isRequired
+}
 
 export default App;

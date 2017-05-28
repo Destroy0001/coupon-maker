@@ -2,31 +2,28 @@
 * Container for CouponBox component
 */
 import { connect } from 'react-redux'
-import { requestCoupon, createCoupon } from '../actions'
+import { createCoupon } from '../actions'
 import CouponBox from '../components/CouponBox'
 
 const mapStateToProps = (state) => {
 	return {
-		coupons: state.coupons
+		error:state.appState.error,
+		coupons: state.couponState.coupons
 	}
 }
 
 const mapDispatchToProps = (dispatch) => {
-
 	return {
-		onRequestCoupon: () => {
-			dispatch(requestCoupon());
-		},
-		onCreateCoupons: (coupon) => {
-			dispatch(createCoupon(coupon));
+		CreateCoupon: (coupon) => {
+			createCoupon(dispatch,coupon);
 		}
 	}
 }
 
-const App = connect(
+const CouponBoxContainer = connect(
 	mapStateToProps,
 	mapDispatchToProps
 )(CouponBox)
 
-export default CouponBox;
+export default CouponBoxContainer;
 

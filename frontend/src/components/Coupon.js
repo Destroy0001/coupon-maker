@@ -5,16 +5,20 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import '../css/coupon.css';
-import axios from 'axios'
 
 class Coupon extends Component {
-	
+
+	deleteCoupon = (e) => {
+		e.preventDefault();
+		this.props.DeleteCoupon(this.props.code);
+	}
+
 	render() {
 		return (
 			<div className="coupon">
-				<div className="coupon-discount" > {this.props.percent} OFF</div>
-				<div className="coupon-code"> {this.props.code } </div>
-				<i className="delete-coupon fa fa-minus-square" onClick={this.deleteCoupon.bind(this)}/>
+				<div className="coupon-discount" > Value: Flat {this.props.percent}% Off</div>
+				<div className="coupon-code"> Code: '{this.props.code }' </div>
+				<i className="delete-coupon fa fa-minus-square" onClick={this.deleteCoupon}/>
 			</div>
 		);
 	}
@@ -22,7 +26,8 @@ class Coupon extends Component {
 
 Coupon.propTypes = {
 	code:PropTypes.string.isRequired,
-	percent:PropTypes.string.isRequired
+	percent:PropTypes.number.isRequired,
+	DeleteCoupon:PropTypes.func.isRequired
 }
 
 

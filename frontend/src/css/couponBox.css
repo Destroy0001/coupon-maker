@@ -7,36 +7,84 @@
 }
 
 .coupon-box-header{
+	position: fixed;
+	top:0;
 	background-color: #dddddd;
 	width: 100%;
-	height: 10%;
-	min-height: 58px;
+	height: 11%;
+	min-height: 60px;
 	text-align: center;
-	font-size: 2em;
-	overflow-y: auto;
+	z-index: 9999999;
+
+}
+
+.coupon-header{
+	display: block;
+	font-size:2em;
+}
+
+.error-box{
+	display: block;
+	border-top:0.5px solid white;
+	font-size: 0.5em;
+}
+
+.spacer {
+	width:100%;
+	height: 12%;
+	min-height: 65px;
 }
 
 .coupon-collection{
 	width: 100%;
-	height: 80%;
-	min-height: 461px;
+	height: 60%;
+	min-height: 350px;
 	border: 1px solid #dddddd;
+	overflow-y: scroll;
 }
 
-.add-coupon{
-	display: block;
-	margin-left: auto;
-	margin-right: auto;
+.coupon-box-footer{
+	position: fixed;
+	bottom: 0;
 	width: 100%;
-	height: 10%;
-	min-height: 58px;
-	max-width: 425px;
-	margin-left:auto;
-	margin-right:auto;
+	height: 20%;
+	min-height: 120px;
+	z-index: 9999999;
 }
 
 .no-coupons {
 	text-align: center;
 	font-size: 3em;
 	color: #dddddd;
+}
+
+.add-coupon {
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	width: 60%;
+}
+
+.add-coupon-input {
+	margin: 5px;
+	width:200px;
+	height:30px;
+	text-align: center;
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+
+}
+
+.add-coupon-button {
+	height: 35px;
+}
+
+.input-error{
+	border-color:red;
+}
+
+.error-box{
+	font-size: 1em;
+	color: red;
 }
