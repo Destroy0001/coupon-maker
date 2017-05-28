@@ -6,6 +6,22 @@
  */
 const stripe = require("stripe")(sails.config.stripe_api_key);
 
+const fetchCoupons = (res) =>{
+
+	/*getting list of coupons from stripe*/
+	stripe.coupons.list({},(err, coupons) => {
+
+			if(err){
+				sails.log.error(new Error(err));
+				res.status(500);
+				res.send("An Error occured while fetching coupons");
+				return; 
+			}
+
+			res.send(coupons);
+	});
+}
+
 module.exports = {
 
 	/* 
@@ -34,10 +50,11 @@ module.exports = {
 				if(err){
 					sails.log.error(new Error(err));
 					res.status(500);
-					res.send("An Error occured");
-					return; 
+					res.send("An error occured while creating coupon");
+					return;
 				}
-				res.send(coupon);
+
+			fetchCoupons(res);
 		});
 	},
 
@@ -48,33 +65,27 @@ module.exports = {
 	destroy: (req,res) => {
 
 		let id = req.params.id;
-		if(id)
-			res.send(stripe.coupons.del(id));
-		else{
-			sails.log.error(new Error("Invalid ID"));
-			res.status(500);
+		if(!id){
+			res.status(400);
 			res.send("Invalid Coupon ID");
 			return;
 		}
+
+		stripe.coupons.del(id, (err,response) => {
+			if(err){
+				sails.log.error(new Error(err));
+				res.status(500);
+				res.send("An error occured while deleting coupon");
+				return; 
+			}
+			fetchCoupons(res);
+		});
 
 	},
 
 	/* lists all coupons */
 	find: (req,res) => {
-
-		/*getting list of coupons from stripe*/
-		stripe.coupons.list({},(err, coupons) => {
-
-			if(err){
-				sails.log.error(new Error(err));
-				res.status(500);
-				res.send("An Error occured");
-				return; 
-			}
-
-			res.send(coupons);
-		});
-
+		fetchCoupons(res);
 	}
 };
 
