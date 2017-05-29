@@ -27,17 +27,17 @@ class CouponBox extends Component {
 			couponCode.value = "";
 		}
 
-		let percent = parseInt(couponValue.value);
+		let percent = couponValue.value;
+		let percentValidation = /^([1-9][0-9]*)$/
 		/*coupon value has to be number and has to be between 0 and 100*/
 		if(
-			!percent ||
-			typeof percent !== "number" ||
+			!percentValidation.test(percent)||
 			percent <= 0 ||
 			percent >= 100
 		){
 			error =  true;
 			couponValue.classList.add('input-error');
-			couponValue.placeholder = "A number between 0 and 100";
+			couponValue.placeholder = "A number between 1 and 99";
 			couponValue.value = "";
 		}
 
