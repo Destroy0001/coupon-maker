@@ -39,8 +39,12 @@ module.exports = {
 			validatedCoupon.id = coupon.id;
 
 
-			/*At least one between amount and percent_off is required */
-			if(!coupon.percent_off){
+			/*percent should be a number between 1 and 99*/
+			let percentValidation = /^([1-9][0-9]*)$/
+			if(
+				!percentValidation.test(coupon.percent_off) ||
+				 coupon.percent_off <=0 ||
+				 coupon.percent_off >= 100 ){
 				return {
 						error:{
 							code:400,
