@@ -19,7 +19,7 @@ class CouponBox extends Component {
 
 		/*placing validation on coupon code for alphanumeric and 10 chars only*/
 		let code = couponCode.value;
-		let codeValidation = /^(\w{0,10})$/;
+		let codeValidation = /^(\w{1,10})$/;
 		if(!codeValidation.test(code)){
 			error = true;
 			couponCode.classList.add('input-error');
