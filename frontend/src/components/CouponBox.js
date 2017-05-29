@@ -9,6 +9,7 @@ import Coupon from '../containers/Coupon';
 
 class CouponBox extends Component {
 
+	/*validates and creates a coupon*/
 	createCoupon  = (e) => {
 		e.preventDefault();
 
@@ -16,12 +17,13 @@ class CouponBox extends Component {
 		let couponValue = document.getElementById('coupon-value');
 		let error = false;
 
-		/*placing validation on coupon code for length at 10 chars*/
+		/*placing validation on coupon code for alphanumeric and 10 chars only*/
 		let code = couponCode.value;
-		if( code.length <= 0 || code.length > 10 ){
+		let codeValidation = /^(\w{0,10})$/;
+		if(!codeValidation.test(code)){
 			error = true;
 			couponCode.classList.add('input-error');
-			couponCode.placeholder = "Max 10 characters";
+			couponCode.placeholder = "A 10 char alphanumeric";
 			couponCode.value = "";
 		}
 
@@ -35,7 +37,7 @@ class CouponBox extends Component {
 		){
 			error =  true;
 			couponValue.classList.add('input-error');
-			couponValue.placeholder = "Should be between 1 and 99";
+			couponValue.placeholder = "A number between 0 and 100";
 			couponValue.value = "";
 		}
 
