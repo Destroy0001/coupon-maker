@@ -35,6 +35,16 @@ module.exports = {
 				}
 			}
 
+			let codeValidation = /^(\w{1,10})$/;
+			if(!codeValidation.test(coupon.id)){
+				return {
+						error:{
+							code:400,
+							message: "Coupon Code is Invalid!"
+						}
+				}
+			}
+
 			/* pushing id to validated coupon object */
 			validatedCoupon.id = coupon.id;
 
